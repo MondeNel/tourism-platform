@@ -16,7 +16,7 @@ export default function RouteTowns() {
 
         <div className="relative grid md:grid-cols-3 gap-8 md:gap-6">
           {/* connecting line */}
-          <div className="hidden md:block absolute top-[38px] left-[16.6%] right-[16.6%] h-px bg-night/15" />
+          <div className="hidden md:block absolute top-[38px] left-[16.6%] right-[16.6%] h-px bg-night/15" aria-hidden="true" />
           {TOWNS.map((t, i) => (
             <Link key={t.slug} to={`/towns/${t.slug}`} className="relative block group">
               <div className="hidden md:flex items-center gap-3 mb-6">

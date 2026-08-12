@@ -20,7 +20,10 @@ export default function Hero() {
       <Starfield />
 
       {/* moon */}
-      <div className="absolute top-20 right-10 md:right-24 w-16 h-16 rounded-full bg-sand shadow-[0_0_60px_rgba(247,244,236,0.35)] opacity-90" />
+      <div
+        className="absolute top-20 right-10 md:right-24 w-16 h-16 rounded-full bg-sand shadow-[0_0_60px_rgba(247,244,236,0.35)] opacity-90"
+        aria-hidden="true"
+      />
 
       {/* horizon silhouette */}
       <svg
@@ -53,11 +56,17 @@ export default function Hero() {
       <div className="absolute -bottom-10 left-0 right-0 z-20 px-6 md:px-10">
         <form
           onSubmit={handleSearch}
+          role="search"
+          aria-label="Search Prieska tourism listings"
           className="max-w-4xl mx-auto bg-sand rounded-2xl shadow-2xl shadow-black/40 p-3 md:p-4 flex flex-col md:flex-row gap-3"
         >
           <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-night/[0.04]">
-            <Search size={18} className="text-night/50" />
+            <Search size={18} className="text-night/50" aria-hidden="true" />
+            <label htmlFor="hero-search" className="sr-only">
+              Search stargazing, guesthouses, river tours
+            </label>
             <input
+              id="hero-search"
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
