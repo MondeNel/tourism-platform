@@ -22,21 +22,6 @@ export default function Hero() {
       {/* Dark overlay for text contrast */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Optional: keep a subtle starfield (very faint) */}
-      {/* <Starfield className="opacity-20" /> */}
-
-      {/* moon – still nice with the river */}
-      <div
-        className="absolute top-20 right-10 md:right-24 w-16 h-16 rounded-full bg-sand shadow-[0_0_60px_rgba(247,244,236,0.35)] opacity-90"
-        aria-hidden="true"
-      />
-
-      {/* horizon silhouette – optional, maybe skip it if river is visible */}
-      {/* <svg ... /> */}
-
-      {/* river reflection strip – optional, can remove if river is the background */}
-      {/* <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-gradient-to-b from-river/50 to-night" /> */}
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex flex-col justify-center">
         <CoordStamp className="text-gold mb-6" />
         <h1 className="font-display text-sand text-5xl sm:text-6xl md:text-7xl leading-[1.02] max-w-3xl">
@@ -50,7 +35,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* floating search card – unchanged */}
+      {/* floating search card */}
       <div className="absolute -bottom-10 left-0 right-0 z-20 px-6 md:px-10">
         <form
           onSubmit={handleSearch}
