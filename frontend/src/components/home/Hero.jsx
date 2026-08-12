@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ChevronRight } from 'lucide-react';
-import Starfield from '@/components/ui/Starfield';
 import CoordStamp from '@/components/ui/CoordStamp';
 
 export default function Hero() {
@@ -14,30 +13,29 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden bg-night">
-      {/* sky gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink via-panel to-river/30" />
-      <Starfield />
+    <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden">
+      {/* Background image - Orange River */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/orange_river.jpg')" }}
+      />
+      {/* Dark overlay for text contrast */}
+      <div className="absolute inset-0 bg-black/40" />
 
-      {/* moon */}
+      {/* Optional: keep a subtle starfield (very faint) */}
+      {/* <Starfield className="opacity-20" /> */}
+
+      {/* moon – still nice with the river */}
       <div
         className="absolute top-20 right-10 md:right-24 w-16 h-16 rounded-full bg-sand shadow-[0_0_60px_rgba(247,244,236,0.35)] opacity-90"
         aria-hidden="true"
       />
 
-      {/* horizon silhouette */}
-      <svg
-        className="absolute bottom-[22%] left-0 w-full h-[18%] text-ink"
-        viewBox="0 0 1440 200"
-        preserveAspectRatio="none"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M0,140 C220,80 380,160 600,110 C820,60 980,150 1180,100 C1320,70 1400,110 1440,100 L1440,200 L0,200 Z" />
-      </svg>
+      {/* horizon silhouette – optional, maybe skip it if river is visible */}
+      {/* <svg ... /> */}
 
-      {/* river reflection strip */}
-      <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-gradient-to-b from-river/50 to-night" />
+      {/* river reflection strip – optional, can remove if river is the background */}
+      {/* <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-gradient-to-b from-river/50 to-night" /> */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex flex-col justify-center">
         <CoordStamp className="text-gold mb-6" />
@@ -46,13 +44,13 @@ export default function Hero() {
           <br />
           meets the <span className="text-gold">Orange River.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-sand/70 text-lg leading-relaxed">
+        <p className="mt-6 max-w-xl text-sand/80 text-lg leading-relaxed">
           Dark skies, river valleys and Northern Cape hospitality &mdash; Prieska,
           Marydale &amp; Niekerkshoop, discovered.
         </p>
       </div>
 
-      {/* floating search card */}
+      {/* floating search card – unchanged */}
       <div className="absolute -bottom-10 left-0 right-0 z-20 px-6 md:px-10">
         <form
           onSubmit={handleSearch}
