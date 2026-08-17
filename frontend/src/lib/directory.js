@@ -45,3 +45,19 @@ export function sortBusinesses(businesses, sort) {
       });
   }
 }
+
+/** Single-listing lookup by slug. Returns undefined when not found. */
+export function getBusinessBySlug(businesses, slug) {
+  return businesses.find((b) => b.slug === slug);
+}
+
+/**
+ * Related listings for a detail page: same category first, then same town,
+ * excluding the current listing. Premium tiers surface first within that.
+ */
+export function getRelatedBusinesses(businesses, current, limit = 3) {
+  const others = businesses.filter((b) => b.slug !== current.slug);
+  const sameCategory = others.filter((b) => b.category === current.category);
+  const sameTown = others.filter((b) => b.category !== current.category && b.town === current.town);
+  return sortBusinesses([...sameCategory, ...sameTown], 'recommended').slice(0, limit);
+}
