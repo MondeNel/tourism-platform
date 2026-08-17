@@ -1,16 +1,26 @@
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
+import { Star, ArrowUpRight } from 'lucide-react';
 import CoordStamp from '@/components/ui/CoordStamp';
+import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
 import { FEATURED_BUSINESSES } from '@/data/businesses';
+import { CATEGORIES } from '@/data/categories';
+
+const categoryLabel = (slug) => CATEGORIES.find((c) => c.slug === slug)?.label || slug;
 
 export default function DirectoryTeaser() {
   return (
     <section className="bg-sand pb-24 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto flex items-end justify-between mb-10">
+        <SectionHeading eyebrow="Local business" title="From the directory" />
+        <Link to="/directory" className="hidden md:flex items-center gap-1 text-sm text-night/60 hover:text-ochre">
+          Browse full directory <ArrowUpRight size={15} />
+        </Link>
+      </div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6">
         <div className="lg:col-span-2 bg-river rounded-2xl p-9 flex flex-col justify-between">
           <div>
-            <CoordStamp label="Local business" className="text-sand/70 mb-3" />
+            <CoordStamp label="Get listed" className="text-sand/70 mb-3" />
             <h3 className="font-display text-2xl md:text-3xl text-sand mb-3">
               Own a guesthouse, tour or restaurant here?
             </h3>
@@ -35,7 +45,7 @@ export default function DirectoryTeaser() {
               <div className="flex items-start justify-between">
                 <div>
                   <h4 className="text-night font-medium text-sm">{b.name}</h4>
-                  <p className="text-night/50 text-xs mt-0.5">{b.category}</p>
+                  <p className="text-night/50 text-xs mt-0.5">{categoryLabel(b.category)}</p>
                 </div>
                 <div className="flex items-center gap-1 text-gold text-xs font-medium">
                   <Star size={12} fill="currentColor" />

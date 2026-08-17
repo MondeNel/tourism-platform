@@ -9,6 +9,7 @@ import RouteLoading from '@/components/ui/RouteLoading';
 // content stays lean (spec §4.6: <3s mobile load on 4G).
 const Placeholder = lazy(() => import('@/pages/Placeholder'));
 const Directory = lazy(() => import('@/pages/Directory'));
+const ListBusiness = lazy(() => import('@/pages/ListBusiness'));
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<Placeholder title="Explore Prieska, Marydale & Niekerkshoop" />} />
             <Route path="/directory" element={<Directory />} />
-            <Route path="/directory/add" element={<Placeholder title="List your business" />} />
+            <Route path="/directory/add" element={<ListBusiness />} />
+            <Route path="/privacy" element={<Placeholder title="Privacy Notice" />} />
             <Route path="/directory/:slug" element={<Placeholder />} />
             <Route path="/towns/:slug" element={<Placeholder />} />
             <Route path="/experiences/:slug" element={<Placeholder />} />
