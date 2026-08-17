@@ -39,8 +39,10 @@ export default function NavDropdown({ item, isOpen, onOpen, onClose, onToggle })
         <div
           id={panelId}
           /* pt-5 bridges the gap between trigger and panel so the pointer
-             never crosses dead space on the way down. */
-          className="absolute left-1/2 -translate-x-1/2 top-full pt-5 z-40"
+             never crosses dead space on the way down.
+             Left-anchored rather than centred: centring pushes the first and
+             last items' panels toward the viewport edges. */
+          className="absolute left-0 top-full pt-5"
         >
           <div className="w-[320px] bg-night border border-sand/10 rounded-2xl shadow-2xl shadow-black/50 p-2 overflow-hidden">
             {item.description && (

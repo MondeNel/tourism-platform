@@ -38,6 +38,16 @@
   50% { opacity: 0.85; }
 }
 
+/* ---------------------------------------------------------------
+   Z-index layer scale — keep new components on these rungs rather
+   than inventing values, or overlays start fighting each other.
+
+     z-10  in-section content above a background/image
+     z-20  elements that overhang their section (e.g. hero search card)
+     z-50  fixed site header + its hover dropdown panels
+     z-60  full-screen modals and drawers (must cover the header)
+----------------------------------------------------------------*/
+
 html {
   scroll-behavior: smooth;
 }

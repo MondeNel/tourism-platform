@@ -73,7 +73,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-30 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         solid ? 'bg-night/95 backdrop-blur border-b border-sand/10 shadow-sm' : 'bg-transparent'
       }`}
       onMouseLeave={closeSoon}
