@@ -13,23 +13,37 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden">
-      {/* Background image - Orange River */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/orange_river.jpg')" }}
-      />
-      {/* Dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-black/40" />
+    <section className="relative h-[92vh] min-h-[640px] w-full bg-night">
+      {/* overflow-hidden lives here, not on <section>: the search card below
+          overhangs the section by design (-bottom-10), and clipping on the
+          section would cut it off. This wrapper contains the image instead. */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Orange River at dusk — real photo, responsive sources (mobile ~32KB, desktop ~220KB)
+            so we're not shipping a multi-MB hero on 3G (spec §4.6). Not lazy-loaded: this is
+            the largest above-the-fold element, so eager + high priority protects LCP. */}
+        <img
+          src="/orange-river.jpg"
+          srcSet="/orange-river-mobile.jpg 900w, /orange-river.jpg 2400w"
+          sizes="100vw"
+          alt="The Orange River at dusk, viewed from the Prieska bridge, with Karoo hills silhouetted against a pink and orange sunset sky"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+
+        {/* readability gradient over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-t from-night via-night/50 to-night/10" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-transparent to-transparent" aria-hidden="true" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 h-full flex flex-col justify-center">
         <CoordStamp className="text-gold mb-6" />
-        <h1 className="font-display text-sand text-5xl sm:text-6xl md:text-7xl leading-[1.02] max-w-3xl">
+        <h1 className="font-display text-sand text-5xl sm:text-6xl md:text-7xl leading-[1.02] max-w-3xl [text-shadow:0_2px_24px_rgba(10,13,22,0.5)]">
           Where the Karoo
           <br />
           meets the <span className="text-gold">Orange River.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-sand/80 text-lg leading-relaxed">
+        <p className="mt-6 max-w-xl text-sand/85 text-lg leading-relaxed [text-shadow:0_1px_12px_rgba(10,13,22,0.6)]">
           Dark skies, river valleys and Northern Cape hospitality &mdash; Prieska,
           Marydale &amp; Niekerkshoop, discovered.
         </p>
